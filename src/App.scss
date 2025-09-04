@@ -1,0 +1,42 @@
+main {
+  min-height: 80vh;
+}
+
+footer {
+  text-align: center;
+}
+
+.adoptable-pet-div {
+  //   display: grid;
+  //   gap: 10px;
+  //   grid-template-columns: auto auto auto;
+
+  .p-head {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+
+  label {
+    font-weight: bold;
+  }
+
+//   textarea {
+//     field-sizing: content;
+//       min-height: 2rem;
+//   }
+}
+
+footer {
+  text-transform: lowercase;
+  letter-spacing: -1px;
+  text-decoration: underline overline;
+}

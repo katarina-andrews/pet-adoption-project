@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { listAllItems, createItem } from "../utils/dynamo";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import CardActionArea from "@mui/material/CardActionArea";
+import Grid from "@mui/material/Grid";
 
 export default function Main() {
   const [pets, setPets] = useState([]);
@@ -14,7 +15,7 @@ export default function Main() {
       const items = await listAllItems("PetAdopt");
 
       setPets(items);
-    }
+    };
 
     handleGetPet();
   }, []);
@@ -26,11 +27,11 @@ export default function Main() {
       id: Date.now().toString(),
       name: event.target.petName.value,
       age: parseInt(event.target.age.value),
-      sex: event.target.sex.value, 
+      sex: event.target.sex.value,
       breed: event.target.breed.value,
       isFixed: event.target.isFixed.value,
-      details: event.target.details.value
-    }
+      details: event.target.details.value,
+    };
 
     console.log(event.target.isFixed.value);
     console.log(newPet);
@@ -40,7 +41,7 @@ export default function Main() {
     setPets((oldPets) => {
       return [...oldPets, newPet];
     });
-  }
+  };
 
   return (
     <>
@@ -58,12 +59,12 @@ export default function Main() {
             <fieldset>
               <legend>Spayed/Neutered</legend>
 
-               <label>
-    <input type="radio" name="isFixed" value="Yes"/> Yes
-  </label>
-  <label>
-    <input type="radio" name="isFixed" value="No"/> No
-  </label>
+              <label>
+                <input type="radio" name="isFixed" value="Yes" /> Yes
+              </label>
+              <label>
+                <input type="radio" name="isFixed" value="No" /> No
+              </label>
             </fieldset>
             <label>Details</label>
             <textarea
@@ -75,38 +76,74 @@ export default function Main() {
             <button type="submit">Add Pet</button>
           </form>
         </section>
-       <section>
-        <h2>Adoptable Pets</h2>
-        {pets?.map((petObject, index) => {
-          return (
-            <div className="adoptable-pet-div" key={index}>
-        <Card sx={{ maxWidth: 400 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="200"
-          image="src/assets/catdog.jpg"
-          alt="cat and dog"
-        />
-        <CardContent>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            <p className="p-head">Name</p><p>{petObject.name}</p>
-            <p className="p-head">Age</p><p>{petObject.age}</p>
-            <p className="p-head">Sex</p><p>{petObject.sex}</p>
-            <p className="p-head">Breed</p><p>{petObject.breed}</p>
-            <p className="p-head">Spayed/Neutered</p><p>{petObject.isFixed}</p>
-            <p className="p-head">Additional Details</p><p>{petObject.details}</p>
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-    </div>
-          );
-        })} 
-      </section>
+        <section>
+          <h2>Adoptable Pets</h2>
+            < Grid
+                container 
+                rowSpacing={3} 
+                columnSpacing={3}
+                alignItems="stretch"
+                >
+          {pets?.map((petObject, index) => {
+            return (
+              <div className="adoptable-pet-div" key={index}>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <Card
+                      sx={{
+                        borderRadius: 3,
+                        boxShadow: 3,
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          height="200"
+                          image="src/assets/catdog.jpg"
+                          alt="cat and dog"
+                        />
+                        <CardContent sx={{ flexGrow: 1 }}>
+                          <Typography
+                            variant="body2"
+                            sx={{ color: "text.secondary" }}
+                          >
+                            <Typography variant="h6" fontWeight="bold">
+                              Name
+                            </Typography>
+                            <p>{petObject.name}</p>
+                            <Typography variant="h6" fontWeight="bold">
+                              Age
+                            </Typography>
+                            <p>{petObject.age}</p>
+                            <Typography variant="h6" fontWeight="bold">
+                              Sex
+                            </Typography>
+                            <p>{petObject.sex}</p>
+                            <Typography variant="h6" fontWeight="bold">
+                              Breed
+                            </Typography>
+                            <p>{petObject.breed}</p>
+                            <Typography variant="h6" fontWeight="bold">
+                              Spayed/Neutered
+                            </Typography>
+                            <p>{petObject.isFixed}</p>
+                            <Typography variant="h6" fontWeight="bold">
+                              Additional Details
+                            </Typography>
+                            <p>{petObject.details}</p>
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+              </div>
+            );
+          })}
+          </Grid>
+        </section>
       </main>
     </>
   );
 }
-
-

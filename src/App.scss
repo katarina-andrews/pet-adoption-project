@@ -7,16 +7,8 @@ footer {
 }
 
 .adoptable-pet-div {
-  //   display: grid;
-  //   gap: 10px;
-  //   grid-template-columns: auto auto auto;
-
-  .p-head {
-    font-weight: bold;
-    font-size: 18px;
-  }
   p {
-    font-size: 14px;
+    font-size: 1rem;
   }
 }
 
@@ -39,4 +31,5 @@ footer {
   text-transform: lowercase;
   letter-spacing: -1px;
   text-decoration: underline overline;
+  margin-top: 1rem;
 }

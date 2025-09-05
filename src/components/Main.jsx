@@ -145,7 +145,7 @@ export default function Main() {
                   <Grid item xs={12} sm={6} md={4}>
                     <Card
                       sx={{
-                        borderRadius: 3,
+                        borderRadius: 2,
                         boxShadow: 3,
                         height: "100%",
                         display: "flex",
@@ -156,7 +156,7 @@ export default function Main() {
                       <CardActionArea>
                         <CardMedia
                           component="img"
-                          image="src/assets/catdog.jpg"
+                          image="public/catdog.jpg"
                           alt="cat and dog"
                         />
                         <CardContent sx={{ flexGrow: 1 }}>
@@ -189,10 +189,10 @@ export default function Main() {
                             </Typography>
                             <p>{petObject.details}</p>
                           </Typography>
-                          <Button onClick={() => handleOpen(petObject)}>
+                          <Button sx={{ color: "green"}}onClick={() => handleOpen(petObject)}>
                             Update Pet Information
                           </Button>
-                          <Button
+                          <Button sx={{ color: 'red' }}
                             onClick={() =>
                               handleDeletePet(petObject.id)
                             }

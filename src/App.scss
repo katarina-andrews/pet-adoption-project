@@ -1,10 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Chewy&family=Inter:opsz@14..32&display=swap");
+
+$sage: hsla(78, 31%, 70%, 1);
+$reseda-green: hsla(79, 30%, 38%, 1);
+$olivine: hsla(74, 41%, 60%, 1);
+$black-olive: hsla(60, 5%, 22%, 1);
+$ebony: hsla(70, 15%, 29%, 1);
+
+html {
+  background-color: $reseda-green;
+  background-image: url("public/pawprint.svg");
+  background-size: 150px;
+}
+
+h1,
+h2 {
+  color: white;
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
 main {
   min-height: 80vh;
+}
+
+fieldset {
+  background-color: white;
 }
 
 .adoptable-pet-div {
   p {
     font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
 }
 
@@ -12,15 +49,18 @@ form {
   display: flex;
   flex-direction: column;
   max-width: fit-content;
+  background-color: white;
+  padding: 1rem;
+  border: 1px black solid;
+  border-radius: 8px;
 
-  label {
-    font-weight: bold;
+  label,
+  legend {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
-
-//   textarea {
-//     field-sizing: content;
-//       min-height: 2rem;
-//   }
 }
 
 footer {
@@ -30,4 +70,3 @@ footer {
   margin-top: 1rem;
   text-align: center;
 }
-

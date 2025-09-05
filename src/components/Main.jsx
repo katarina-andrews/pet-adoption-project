@@ -156,7 +156,7 @@ export default function Main() {
                       <CardActionArea>
                         <CardMedia
                           component="img"
-                          image="public/catdog.jpg"
+                          image="/catdog.jpg"
                           alt="cat and dog"
                         />
                         <CardContent sx={{ flexGrow: 1 }}>

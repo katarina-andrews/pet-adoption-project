@@ -5,15 +5,17 @@ import {
   updateItem,
   deleteItem,
 } from "../utils/dynamo";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import CardActionArea from "@mui/material/CardActionArea";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
+import {
+  Modal,
+  Button,
+  Box,
+  Grid,
+  Typography,
+  CardActionArea,
+  CardContent,
+  Card,
+  CardMedia,
+} from "@mui/material";
 
 export default function Main() {
   const [pets, setPets] = useState([]);
@@ -93,7 +95,7 @@ export default function Main() {
   };
 
   const handleDeletePet = async (id) => {
-    await deleteItem("PetAdopt", { id: id});
+    await deleteItem("PetAdopt", { id: id });
     console.log(id);
     setPets((oldPets) => {
       return oldPets.filter((petObject) => {
@@ -133,7 +135,9 @@ export default function Main() {
               id="details"
               placeholder="temperament, good w/ kids, good w/ other pets, size/weight etc."
             ></textarea>
-            <button type="submit">Add Pet</button>
+            <Button sx={{ color: "green" }} type="submit">
+              Add Pet
+            </Button>
           </form>
         </section>
         <section>
@@ -189,13 +193,15 @@ export default function Main() {
                             </Typography>
                             <p>{petObject.details}</p>
                           </Typography>
-                          <Button sx={{ color: "green"}}onClick={() => handleOpen(petObject)}>
+                          <Button
+                            sx={{ color: "green" }}
+                            onClick={() => handleOpen(petObject)}
+                          >
                             Update Pet Information
                           </Button>
-                          <Button sx={{ color: 'red' }}
-                            onClick={() =>
-                              handleDeletePet(petObject.id)
-                            }
+                          <Button
+                            sx={{ color: "red" }}
+                            onClick={() => handleDeletePet(petObject.id)}
                           >
                             Delete Me. I've Been Adopted!
                           </Button>
@@ -207,10 +213,7 @@ export default function Main() {
               );
             })}
           </Grid>
-          <Modal
-            open={open}
-            onClose={handleClose}
-          >
+          <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Text in a modal
@@ -313,7 +316,7 @@ export default function Main() {
                     name="isFixed"
                   />
 
-                      <label>No</label>
+                  <label>No</label>
                   <input
                     onChange={(event) =>
                       setPetEdit({
@@ -350,7 +353,9 @@ export default function Main() {
                   name="details"
                   id="details"
                 />
-                <button type="submit">Add Pet</button>
+                <Button sx={{ color: "green" }} type="submit">
+                  Add Pet
+                </Button>
               </form>
             </Box>
           </Modal>

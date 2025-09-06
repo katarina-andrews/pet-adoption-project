@@ -71,13 +71,15 @@ export default function Main() {
     setPets((oldPets) => {
       return [...oldPets, newPet];
     });
+
+    event.target.reset();
   };
 
   const handleUpdatePet = async (event) => {
     event.preventDefault();
 
     const { name, age, sex, breed, isFixed, details } = petEdit;
-
+    console.log(petEdit);
     console.log(petEdit.id);
     await updateItem(
       "PetAdopt",
@@ -215,9 +217,6 @@ export default function Main() {
           </Grid>
           <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
               <form onSubmit={(event) => handleUpdatePet(event)}>
                 <h2>Pet Information Form</h2>
                 <label htmlFor="petName">Name</label>
@@ -311,9 +310,10 @@ export default function Main() {
                         details: petEdit.details,
                       })
                     }
-                    value={petEdit.isFixed}
+                    value="Yes"
                     type="radio"
                     name="isFixed"
+                    checked={petEdit.isFixed === "Yes"}
                   />
 
                   <label>No</label>
@@ -329,7 +329,8 @@ export default function Main() {
                         details: petEdit.details,
                       })
                     }
-                    value={petEdit.isFixed}
+                    value="No"
+                    checked={petEdit.isFixed === "No"}
                     type="radio"
                     name="isFixed"
                   />
